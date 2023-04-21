@@ -19,14 +19,20 @@
         "issues": "https://github.com/torres-developer/php-reverse-proxy/issues/",
         "source": "https://github.com/torres-developer/php-reverse-proxy/"
     },
-    "require": {},
+    "require": {
+        "psr/http-client": "^1.0",
+        "torres-developer/pull": "dev-master"
+    },
     "provide": {
-        "psr/client-implementation": "^2.0@dev"
+        "psr/client-implementation": "^1.0"
     },
     "autoload": {
         "psr-4": {
             "TorresDeveloper\\ReverseProxy\\": "src/"
-        }
+        },
+        "files": [
+            "src/reverse_proxy.php"
+        ]
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
@@ -35,5 +41,8 @@
             "type": "vcs",
             "url": "https://github.com/torres-developer/php-reverse-proxy/"
         }
-    ]
+    ],
+    "require-dev": {
+        "pds/skeleton": "^1.0"
+    }
 }

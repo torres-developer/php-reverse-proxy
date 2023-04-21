@@ -4,13 +4,325 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2b774cd1d42fe500f57ce32aff345c58",
-    "packages": [],
+    "content-hash": "c65752ce57cb5bfbaa952cab0e45b0bb",
+    "packages": [
+        {
+            "name": "pds/skeleton",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-pds/skeleton.git",
+                "reference": "95e476e5d629eadacbd721c5a9553e537514a231"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-pds/skeleton/zipball/95e476e5d629eadacbd721c5a9553e537514a231",
+                "reference": "95e476e5d629eadacbd721c5a9553e537514a231",
+                "shasum": ""
+            },
+            "bin": [
+                "bin/pds-skeleton"
+            ],
+            "type": "standard",
+            "autoload": {
+                "psr-4": {
+                    "Pds\\Skeleton\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "CC-BY-SA-4.0"
+            ],
+            "description": "Standard for PHP package skeletons.",
+            "homepage": "https://github.com/php-pds/skeleton",
+            "support": {
+                "issues": "https://github.com/php-pds/skeleton/issues",
+                "source": "https://github.com/php-pds/skeleton/tree/1.x"
+            },
+            "time": "2017-01-25T23:30:41+00:00"
+        },
+        {
+            "name": "psr/http-client",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/http-client.git",
+                "reference": "0955afe48220520692d2d09f7ab7e0f93ffd6a31"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/http-client/zipball/0955afe48220520692d2d09f7ab7e0f93ffd6a31",
+                "reference": "0955afe48220520692d2d09f7ab7e0f93ffd6a31",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.0 || ^8.0",
+                "psr/http-message": "^1.0 || ^2.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Http\\Client\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "https://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interface for HTTP clients",
+            "homepage": "https://github.com/php-fig/http-client",
+            "keywords": [
+                "http",
+                "http-client",
+                "psr",
+                "psr-18"
+            ],
+            "support": {
+                "source": "https://github.com/php-fig/http-client/tree/1.0.2"
+            },
+            "time": "2023-04-10T20:12:12+00:00"
+        },
+        {
+            "name": "psr/http-factory",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/http-factory.git",
+                "reference": "e616d01114759c4c489f93b099585439f795fe35"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/http-factory/zipball/e616d01114759c4c489f93b099585439f795fe35",
+                "reference": "e616d01114759c4c489f93b099585439f795fe35",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0.0",
+                "psr/http-message": "^1.0 || ^2.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Http\\Message\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "https://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interfaces for PSR-7 HTTP message factories",
+            "keywords": [
+                "factory",
+                "http",
+                "message",
+                "psr",
+                "psr-17",
+                "psr-7",
+                "request",
+                "response"
+            ],
+            "support": {
+                "source": "https://github.com/php-fig/http-factory/tree/1.0.2"
+            },
+            "time": "2023-04-10T20:10:41+00:00"
+        },
+        {
+            "name": "psr/http-message",
+            "version": "1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/http-message.git",
+                "reference": "cb6ce4845ce34a8ad9e68117c10ee90a29919eba"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/http-message/zipball/cb6ce4845ce34a8ad9e68117c10ee90a29919eba",
+                "reference": "cb6ce4845ce34a8ad9e68117c10ee90a29919eba",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2 || ^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Http\\Message\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "http://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interface for HTTP messages",
+            "homepage": "https://github.com/php-fig/http-message",
+            "keywords": [
+                "http",
+                "http-message",
+                "psr",
+                "psr-7",
+                "request",
+                "response"
+            ],
+            "support": {
+                "source": "https://github.com/php-fig/http-message/tree/1.1"
+            },
+            "time": "2023-04-04T09:50:52+00:00"
+        },
+        {
+            "name": "torres-developer/http-message-impl",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/torres-developer/http-message-impl.git",
+                "reference": "c42522314c76efaf9c79e2187e479afa19ad7423"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/torres-developer/http-message-impl/zipball/c42522314c76efaf9c79e2187e479afa19ad7423",
+                "reference": "c42522314c76efaf9c79e2187e479afa19ad7423",
+                "shasum": ""
+            },
+            "require": {
+                "pds/skeleton": "^1.0",
+                "php": ">=8.1.13",
+                "psr/http-factory": "^1.0@dev",
+                "psr/http-message": "^1.0@dev"
+            },
+            "provide": {
+                "psr/http-factory-implementation": "^1.0@dev",
+                "psr/http-message-implementation": "^1.0@dev"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "TorresDeveloper\\HTTPMessage\\": "src/",
+                    "TorresDeveloper\\HTTPMessage\\Factories\\": "src/factories/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "AGPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "torres-developer",
+                    "email": "torres.dev@disroot.org",
+                    "homepage": "https://github.com/torres-developer",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Implemantation of the psr-7, psr-17",
+            "homepage": "https://github.com/torres-developer/http-message-impl",
+            "keywords": [
+                "implemantation",
+                "psr",
+                "psr-17",
+                "psr-7"
+            ],
+            "support": {
+                "docs": "https://www.php-fig.org/psr/",
+                "issues": "https://github.com/torres-developer/http-message-impl/issues",
+                "source": "https://github.com/torres-developer/http-message-impl/"
+            },
+            "time": "2023-01-29T00:00:00+00:00"
+        },
+        {
+            "name": "torres-developer/pull",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/torres-developer/php-pull.git",
+                "reference": "98f2f066504ad52d4cb1969aa71312c17da8d935"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/torres-developer/php-pull/zipball/98f2f066504ad52d4cb1969aa71312c17da8d935",
+                "reference": "98f2f066504ad52d4cb1969aa71312c17da8d935",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "pds/skeleton": "^1.0",
+                "php": ">=8.1.13",
+                "torres-developer/http-message-impl": "dev-master"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/pull.php"
+                ],
+                "psr-4": {
+                    "TorresDeveloper\\Pull\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "torres-developer",
+                    "email": "torres.dev@disroot.org",
+                    "homepage": "https://github.com/torres-developer",
+                    "role": "Developer"
+                }
+            ],
+            "description": "An PHP cURL extension wrapper",
+            "homepage": "https://github.com/torres-developer/php-pull",
+            "keywords": [
+                "curl",
+                "fiber",
+                "libcurl"
+            ],
+            "support": {
+                "issues": "https://github.com/torres-developer/php-pull/issues",
+                "source": "https://github.com/torres-developer/php-pull/"
+            },
+            "time": "2023-01-07T00:00:00+00:00"
+        }
+    ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
-    "prefer-stable": false,
+    "stability-flags": {
+        "torres-developer/pull": 20
+    },
+    "prefer-stable": true,
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
