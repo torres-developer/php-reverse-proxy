@@ -37,7 +37,10 @@ function reverse_proxy(string $target, RequestInterface $req, bool $serve = true
             header($res->getHeaderLine($h));
         }
 
-        echo $res->getBody()->getContents() ?: null;
+        try {
+            echo $res->getBody()->getContents() ?: null;
+        } catch (\RuntimeException $e) {
+        }
     }
 
     return $res;
