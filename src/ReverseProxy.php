@@ -23,6 +23,7 @@ namespace TorresDeveloper\ReverseProxy;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\UriInterface;
 use TorresDeveloper\HTTPMessage\HTTPVerb;
 use TorresDeveloper\HTTPMessage\Response;
 
@@ -33,9 +34,9 @@ final class ReverseProxy implements ClientInterface
     private string $proxyPath;
     private string $target;
 
-    public function __construct(string $proxyPath, string $target)
+    public function __construct(string $proxyPath, UriInterface $target)
     {
-        $this->proxyPath = rtrim($proxyPath, "/");
+        $this->proxyPath = rtrim((string) $proxyPath, "/");
         $this->target = rtrim($target, "/");
     }
 

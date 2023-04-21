@@ -2,8 +2,15 @@
 
 All notable changes to this publication will be documented in this file.
 
-## 1.0.1 - 2023-21-4
+## 1.0.2 - 2023-21-4
+Two new helper functions:
+* `serverRequest` - creates a `ServerRequestInterface` that you can use for the
+  `ReverseProxy::sendRequest` method. It uses PHP superglobals like `$_SERVER`,
+  `$_COOKIES`, `$_SESSION`, `$_FILES`, to create the object;
+* `respond` - Can respond the status code, headers, body of a
+  `ResponseInterface` to the client;
 
+## 1.0.1 - 2023-21-4
 Exception classes.
 
 ## 1.0.0 - 2023-21-4

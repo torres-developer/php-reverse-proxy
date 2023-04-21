@@ -16,7 +16,11 @@ reverse proxy.
 
 I'm trying to use the tools that were given to me :)
 
-# Code Example
+# Examples
+
+## The simplest use
+
+It will reverse proxy to `http://localhost:3000/` always.
 
 ``` php
 <?php
@@ -24,43 +28,92 @@ I'm trying to use the tools that were given to me :)
 declare(encoding="UTF-8");
 declare(strict_types=1);
 
-use Psr\Http\Message\UploadedFileInterface;
-use TorresDeveloper\HTTPMessage\Headers;
-use TorresDeveloper\HTTPMessage\HTTPVerb;
-use TorresDeveloper\HTTPMessage\Request;
-use TorresDeveloper\HTTPMessage\ServerRequest;
-use TorresDeveloper\HTTPMessage\Stream;
-use TorresDeveloper\HTTPMessage\UploadedFile;
-use TorresDeveloper\HTTPMessage\URI;
-
 use function TorresDeveloper\ReverseProxy\reverse_proxy;
 
 require __DIR__ . "/vendor/autoload.php";
 
-$uri = (($_SERVER["HTTP_HOST"] ?? "") . ($_SERVER["REQUEST_URI"] ?? ""));
+reverse_proxy("http://localhost:3000/");
+```
 
-$uri = new URI($uri, false);
+## Other Example
 
-$method = HTTPVerb::from($_SERVER["REQUEST_METHOD"]);
+In this example in contrary to the other one the request does not always go to
+`http://localhost:3000/`. You need to make a request to the path `/app/` and
+then what appears after the `/app/` will also be part of the request path that
+the reverse proxy request so a request to `/app/something/` will do a request
+to `http://localhost:3000/something/`.
 
-$body = new Stream(new \SplFileObject("php://input"));
+I'm also showing how you can handle some `\Exception`s and the use off the
+function `respond` to show respond the status code, headers, body, to the
+client.
 
-$headers = new Headers();
-$keys = array_keys($_SERVER);
-foreach ($keys as $k) {
-    if (str_starts_with($k, "HTTP_")) {
-        $header = strtr(mb_substr($k, 5), "_", "-");
+``` php
+<?php
 
-        $headers->$header = $_SERVER[$k];
-    }
+declare(encoding="UTF-8");
+declare(strict_types=1);
+
+use Psr\Http\Client\ClientExceptionInterface;
+use Psr\Http\Client\NetworkExceptionInterface;
+use Psr\Http\Client\RequestExceptionInterface;
+use TorresDeveloper\HTTPMessage\Response;
+use TorresDeveloper\HTTPMessage\URI;
+use TorresDeveloper\ReverseProxy\ReverseProxy;
+
+use function TorresDeveloper\ReverseProxy\respond;
+use function TorresDeveloper\ReverseProxy\serverRequest;
+
+require __DIR__ . "/vendor/autoload.php";
+
+$proxy = new ReverseProxy("/app/", new URI("http://localhost:3000/"));
+
+try {
+    $res = $proxy->sendRequest(serverRequest());
+} catch (RequestExceptionInterface $e) {
+    $method = $e->getRequest()->getMethod();
+    $uri = $e->getRequest()->getUri();
+    respond(new Response(
+        500,
+        body: "Request `[$method] $uri` failed.",
+        headers: [
+            "Content-Type" => "text/plain"
+        ]
+    ));
+} catch (NetworkExceptionInterface $e) {
+    $method = $e->getRequest()->getMethod();
+    $uri = $e->getRequest()->getUri();
+    respond(new Response(
+        500,
+        body: "Request `[$method] $uri` could not be completed because of network issues.",
+        headers: [
+            "Content-Type" => "text/plain"
+        ]
+    ));
+} catch (ClientExceptionInterface $e) {
+    respond(new Response(
+        500,
+        body: "Unexpected error occured on the reverse proxy side.",
+        headers: [
+            "Content-Type" => "text/plain"
+        ]
+    ));
+} catch (\Throwable $th) {
+    respond(new Response(
+        500,
+        body: "Unexpected error occured.",
+        headers: [
+            "Content-Type" => "text/plain"
+        ]
+    ));
 }
 
-$req = new ServerRequest($uri, $method, $body, $headers);
+if ($res->getStatusCode() === 404) {
+    // It might be that the request to possibly reverse proxy didn't start with
+    // the path of the endpoint defined on the ReverseProxy::__constructor
+    // earlier in the code.
+}
 
-start_session();
+respond($res);
 
-$req = $req->withCookieParams(array_merge($_COOKIE, $_SESSION))
-    ->withUploadedFiles(array_filter(array_map(UploadedFile::from_FILES(...), $_FILES), fn ($i) => $i instanceof UploadedFileInterface));
-
-reverse_proxy("http://localhost:3000/", $req);
+exit(0);
 ```
