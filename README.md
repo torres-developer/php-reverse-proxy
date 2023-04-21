@@ -21,6 +21,9 @@ I'm trying to use the tools that were given to me :)
 ``` php
 <?php
 
+declare(encoding="UTF-8");
+declare(strict_types=1);
+
 use Psr\Http\Message\UploadedFileInterface;
 use TorresDeveloper\HTTPMessage\Headers;
 use TorresDeveloper\HTTPMessage\HTTPVerb;
@@ -31,6 +34,8 @@ use TorresDeveloper\HTTPMessage\UploadedFile;
 use TorresDeveloper\HTTPMessage\URI;
 
 use function TorresDeveloper\ReverseProxy\reverse_proxy;
+
+require __DIR__ . "/vendor/autoload.php";
 
 $uri = (($_SERVER["HTTP_HOST"] ?? "") . ($_SERVER["REQUEST_URI"] ?? ""));
 
