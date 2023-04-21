@@ -34,9 +34,7 @@ use function TorresDeveloper\ReverseProxy\reverse_proxy;
 
 $uri = (($_SERVER["HTTP_HOST"] ?? "") . ($_SERVER["REQUEST_URI"] ?? ""));
 
-$uri = new URI($uri ?: $_GET[$this->cfg->get(
-    "path_search_param"
-)] ?? null, false);
+$uri = new URI($uri, false);
 
 $method = HTTPVerb::from($_SERVER["REQUEST_METHOD"]);
 
