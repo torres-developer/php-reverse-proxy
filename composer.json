@@ -1,0 +1,39 @@
+{
+    "$schema": "https://getcomposer.org/schema.json",
+    "name": "torres-developer/reverse-proxy",
+    "description": "Reverse Proxy using only PHP",
+    "type": "library",
+    "keywords": [ "reverse proxy", "psr" ],
+    "homepage": "https://github.com/torres-developer/php-reverse-proxy/",
+    "readme": "./README.md",
+    "license": "AGPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "torres-developer",
+            "email": "torres.dev@disroot.org",
+            "homepage": "https://github.com/torres-developer",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/torres-developer/php-reverse-proxy/issues/",
+        "source": "https://github.com/torres-developer/php-reverse-proxy/"
+    },
+    "require": {},
+    "provide": {
+        "psr/client-implementation": "^2.0@dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "TorresDeveloper\\ReverseProxy\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/torres-developer/php-reverse-proxy/"
+        }
+    ]
+}
