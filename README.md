@@ -58,13 +58,5 @@ $req = new ServerRequest($uri, $method, $body, $headers);
 $req = $req->withCookieParams(array_merge($_COOKIE, $_SESSION))
     ->withUploadedFiles(array_filter(array_map(UploadedFile::from_FILES(...), $_FILES), fn ($i) => $i instanceof UploadedFileInterface));
 
-$contents = null;
-
-try {
-    $contents = $body->getContents();
-} catch (\Throwable) {
-    $contents = "";
-}
-
 reverse_proxy("http://localhost:3000/", $req);
 ```
