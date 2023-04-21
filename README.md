@@ -46,7 +46,6 @@ $method = HTTPVerb::from($_SERVER["REQUEST_METHOD"]);
 $body = new Stream(new \SplFileObject("php://input"));
 
 $headers = new Headers();
-
 $keys = array_keys($_SERVER);
 foreach ($keys as $k) {
     if (str_starts_with($k, "HTTP_")) {
@@ -57,6 +56,8 @@ foreach ($keys as $k) {
 }
 
 $req = new ServerRequest($uri, $method, $body, $headers);
+
+start_session();
 
 $req = $req->withCookieParams(array_merge($_COOKIE, $_SESSION))
     ->withUploadedFiles(array_filter(array_map(UploadedFile::from_FILES(...), $_FILES), fn ($i) => $i instanceof UploadedFileInterface));
