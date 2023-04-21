@@ -4,6 +4,7 @@
     "description": "Reverse Proxy using only PHP",
     "type": "library",
     "keywords": [ "reverse proxy", "psr" ],
+    "version": "1.0.1",
     "homepage": "https://github.com/torres-developer/php-reverse-proxy/",
     "readme": "./README.md",
     "license": "AGPL-3.0-or-later",

@@ -2,6 +2,10 @@
 
 All notable changes to this publication will be documented in this file.
 
+## 1.0.1 - 2023-21-4
+
+Exception classes.
+
 ## 1.0.0 - 2023-21-4
 
 First release.
