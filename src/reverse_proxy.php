@@ -32,8 +32,10 @@ use TorresDeveloper\HTTPMessage\Stream;
 use TorresDeveloper\HTTPMessage\UploadedFile;
 use TorresDeveloper\HTTPMessage\URI;
 
-function reverseProxy(string|UriInterface $target, RequestInterface $req = serverRequest(), bool $serve = true): ResponseInterface
+function reverseProxy(string|UriInterface $target, RequestInterface $req = null, bool $serve = true): ResponseInterface
 {
+    $req ??= serverRequest();
+
     $proxy = new ReverseProxy(
         parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH),
         $target instanceof UriInterface ? $target : new URI($target)
