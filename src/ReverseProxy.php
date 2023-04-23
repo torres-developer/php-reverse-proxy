@@ -45,7 +45,7 @@ final class ReverseProxy implements ClientInterface
         $requestPath = $request->getUri()->getPath() ?: "/";
 
         if (str_starts_with($requestPath, $this->proxyPath)) {
-            $target = "$this->target/" . substr($requestPath, strlen($this->proxyPath));
+            $target = $this->target . substr($requestPath, strlen($this->proxyPath));
 
             try {
                 return pull($target, HTTPVerb::from($request->getMethod()), $request->getBody(), $request->getHeaders());
